@@ -1,0 +1,196 @@
+\documentclass[10pt,landscape]{article}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{esdiff}
+\usepackage{cancel}
+
+% To make this come out properly in landscape mode, do one of the following
+% 1.
+%  pdflatex latexsheet.tex
+%
+% 2.
+%  latex latexsheet.tex
+%  dvips -P pdf  -t landscape latexsheet.dvi
+%  ps2pdf latexsheet.ps
+
+
+% If you're reading this, be prepared for confusion.  Making this was
+% a learning experience for me, and it shows.  Much of the placement
+% was hacked in; if you make it better, let me know...
+
+
+% 2008-04
+% Changed page margin code to use the geometry package. Also added code for
+% conditional page margins, depending on paper size. Thanks to Uwe Ziegenhagen
+% for the suggestions.
+
+% 2006-08
+% Made changes based on suggestions from Gene Cooperman. <gene at ccs.neu.edu>
+
+
+% To Do:
+% \listoffigures \listoftables
+% \setcounter{secnumdepth}{0}
+
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+	{ \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+	{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+	}
+
+% Turn off header and footer
+\pagestyle{empty}
+ 
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\makeatother
+
+% Define BibTeX command
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+
+\raggedright
+\footnotesize
+\begin{multicols}{3}
+
+
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\begin{center}
+     \Large{\textbf{Dynamics Cheat Sheet}} \\
+\end{center}
+
+\section{Linear Momentum $\mathbf{L}$}
+    {\bf Definition:} total force acting on a particle is equal to the time
+    rate of change of its linear momentum.\\
+    {\bf Equation:} $\mathbf{L} = m\mathbf{v}$ \\
+    - for a system of particles ($G$: center of mass):
+    \[ \mathbf{L} = \sum_{i} m_i \mathbf{v}_i = m \mathbf{v}_G \]
+    {\bf Time rate of change:} $\mathbf{\dot{L}} = \mathbf{F}$ \\
+    - for a system of particles ($G$: center of mass):
+    \[ \mathbf{\dot{L}} = \sum_{i} m_i \mathbf{a}_i = \sum_i \mathbf{F}_i = 
+    \underbrace{\mathbf{F}}_{\text{external forces}} = m \mathbf{a}_G \]
+
+
+\section{Angular Momentum $\mathbf{H}$}
+
+    {\bf Definition:} "moment" of the particle's  linear momentum $\mathbf{L}$
+    about a point $O$.\\
+
+    {\bf Equation:} $\mathbf{H}_{O} = \mathbf{r} \times \mathbf{L} = \mathbf{r} 
+    \times m\mathbf{v}$ \\
+    {\bf Equation:} $\mathbf{H}_{O} = \mathbf{r}_G \times m\mathbf{v}_G + \mathbf{H}_G$ \\
+    - for a system of particles (about fixed point $O$):
+    \begin{align*}
+        \mathbf{H}_O &= \sum_i \left( \mathbf{r}_i \times m_i \mathbf{v}_i \right)
+    \end{align*}
+    {\bf Equation:} taken about the center of mass $G$:
+    \begin{align}
+        \mathbf{H}_G &= \sum_i \left( \mathbf{r}_i' \times m \mathbf{v}_i \right) \;\;\; | \;\; \mathbf{v}_i = 
+            \mathbf{\dot{r}}_i = \mathbf{\dot{r}}_G + \mathbf{\dot{r}}_i' = \mathbf{v}_G + \mathbf{v}_i' \\
+        &= \sum_i \left( \mathbf{r}_i' \times m \left( \mathbf{v}_G + \mathbf{v}_i' \right) \right) \nonumber\\
+        &= \sum_i \left( \mathbf{r}_i' \times m \mathbf{v}_G \right) + 
+           \sum_i \left( \mathbf{r}_i' \times m \mathbf{v}_i' \right)\;\; | 
+           \; -\mathbf{v}_G \times \sum_i m_i \mathbf{r}_i' = 0  \nonumber\\
+        \mathbf{H}_G &= \sum_i \left( \mathbf{r}_i' \times m \mathbf{v}_i' \right)
+    \end{align}
+    Equation (1) is the {\bf \em absolute angular momentum}, whereas
+    equation (2) is the {\bf \em relative angular momentum}; when taken about 
+    $G$, these quantities are identical.
+
+    {\bf Time rate of change:} wrt fixed point $O$
+    \begin{align*}
+        \diff{\mathbf{H}_O}{t} &= \cancelto{0}{\mathbf{\dot{r}} \times m\mathbf{v}} + 
+        \mathbf{r} \times m\mathbf{\dot{v}}\;\;\; | \;\; \mathbf{\dot{r}} = \mathbf{v}    \\
+        &= \mathbf{r} \times m\mathbf{a}\;\;\; | \;\; \mathbf{F} = m\mathbf{a}    \\
+        &= \mathbf{r} \times \mathbf{F} \\
+        &= \mathbf{M}_O
+    \end{align*}
+    - for a system of particles (about fixed point $O$):
+    \begin{align*}
+        \mathbf{\dot{H}}_O &= \sum_i \left( \cancelto{0}{\mathbf{\dot{r}}_i \times m_i \mathbf{v}_i} \right) + 
+            \sum_i \left( \mathbf{{r}}_i \times m_i \mathbf{a}_i \right) \\
+        &= \sum_i \left( \mathbf{{r}}_i \times \mathbf{F}_i \right) + \sum_i M_i \;\;\; | \;\; M_i 
+            = \text{external moments} \\
+        &= \mathbf{M}_O
+    \end{align*}
+    {\bf Time rate of change:} about CoM $G$:
+    \[\mathbf{\dot{H}}_G = \sum_i \left( \mathbf{r}_i' \times m \mathbf{\dot{v}}_i' \right) = 
+        \sum_i \left( \mathbf{r}_i' \times \mathbf{F}_i \right) + \sum_i M_i = \mathbf{M}_G,\]
+    where $\mathbf{M}_G$ is the total moment about $G$ of the applied external
+    forces plus any external moments. Expression valid for any movement of $G$!
+
+
+\section{Angular Impulse}
+    \[ \int_{t_1}^{t_2}{\mathbf{M}_O}dt = \int_{t_1}^{t_2}{\mathbf{\dot{H}}_O}dt 
+        = \mathbf{H}_O(t_2) - \mathbf{H}_O(t_1) = \Delta \mathbf{H}_O \]
+    "Useful when dealing with impulsive forces. Possible to calculate the 
+    integrated effect of a force on a particle without knowing in detail the 
+    actual value of the force as a function of time."\\
+
+
+\section{Kinetic Energy {T}}
+    {\bf Equation:} for a system of particles:
+    \begin{align*}
+        T &= \sum_i T_i = \sum_i \left( \frac{1}{2} m_i \mathbf{v}_i \cdot \mathbf{v}_i \right) \;\; | \;\;
+            \text{decompose into relative and $G$} \\
+          &= \frac{1}{2} m v_G^2 + \sum_i \frac{1}{2} m_i {v_i'}^2
+    \end{align*}
+
+
+\section{Center of Mass}
+    \[\mathbf{r}_G = \frac{1}{m}\left(\sum_i m_i \mathbf{r}_i\right); m = \sum_i m_i\]
+
+
+\section{Tangential Velocity}
+\[\mathbf{v} = \boldsymbol{\omega} \times \mathbf{r}\]
+
+\section{Coreolis Theorem}
+\section{Space and Body Cones}
+
+
+\clearpage
+
+
+\end{multicols}
+\end{document}
