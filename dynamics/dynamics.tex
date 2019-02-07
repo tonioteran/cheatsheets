@@ -7,6 +7,7 @@
 \usepackage{amsmath}
 \usepackage{esdiff}
 \usepackage{cancel}
+\usepackage{mathtools}
 
 % To make this come out properly in landscape mode, do one of the following
 % 1.
@@ -159,7 +160,15 @@
     \[\mathbf{\dot{H}}_G = \sum_i \left( \mathbf{r}_i' \times m \mathbf{\dot{v}}_i' \right) = 
         \sum_i \left( \mathbf{r}_i' \times \mathbf{F}_i \right) + \sum_i M_i = \mathbf{M}_G,\]
     where $\mathbf{M}_G$ is the total moment about $G$ of the applied external
-    forces plus any external moments. Expression valid for any movement of $G$!
+    forces plus any external moments. Expression valid for any movement of $G$! \\
+    {\bf Time rate of change:} 3D rigid body, body-fixed frame:
+    \begin{align*}
+        \mathbf{\dot{H}} &= [\mathbf{I}]\boldsymbol{\dot{\omega}} + \boldsymbol{\omega} \times \mathbf{H} = \mathbf{M} \\
+        M_x &= \dot{H}_x - H_y\omega_z + H_z \omega_y \\
+        M_y &= \dot{H}_y - H_z\omega_x + H_x \omega_z \\
+        M_z &= \dot{H}_z - H_x\omega_y + H_y \omega_x 
+    \end{align*}
+    {\bf Remark:} internal forces and motions {\bf will not } change angular momentum!
 
 
 \section{Conservation of Angular Momentum}
@@ -179,12 +188,35 @@
 
 
 \section{Kinetic Energy {T}}
+    {\bf Equation:} $T = T_T + T_R$, translational and rotational parts\\
     {\bf Equation:} for a system of particles:
     \begin{align*}
         T &= \sum_i T_i = \sum_i \left( \frac{1}{2} m_i \mathbf{v}_i \cdot \mathbf{v}_i \right) \;\; | \;\;
-            \text{decompose into relative and $G$} \\
+            \text{relative and $G$ parts} \\
           &= \frac{1}{2} m v_G^2 + \sum_i \frac{1}{2} m_i {v_i'}^2
     \end{align*}
+    {\bf Equation:} for a 3D rigid body:
+    \begin{align*}
+        T &= \frac{1}{2} m v_G^2 + \frac{1}{2} \boldsymbol{\omega}\cdot \mathbf{H}_G \\
+          &= \underbrace{\frac{1}{2} \mathbf{v}_G \cdot \mathbf{L}_G}_{\text{translation}} + \underbrace{\frac{1}{2} \boldsymbol{\omega}\cdot \mathbf{H}_G}_{\text{rotation}}
+    \end{align*}
+    {\bf Equation:} fxd pt $O$ about which body rotates:
+    \begin{align*}
+        T &= \frac{1}{2} \boldsymbol{\omega}\cdot \mathbf{H}_O 
+    \end{align*}
+    {\bf Equation:} instantaneous center of rot $C$
+    \begin{align*}
+        T &= \frac{1}{2} \boldsymbol{\omega}\cdot \mathbf{H}_C 
+    \end{align*}
+    {\bf Equation:} if $\boldsymbol{\omega}$ expressed in principal axes
+    \begin{align*}
+        T &= \frac{1}{2} m v_G^2 + 
+            \frac{1}{2} \left( I_{xx}\omega_x^2 + I_{yy}\omega_y^2 + I_{zz}\omega_z^2 \right)
+    \end{align*}
+    {\bf Remark:} can provide considerable insight into the behavior of a 
+    rotating body.\\
+    {\bf Remark:} no assurance that energy will be conserved; internal motions
+    can dissipate energy.
 
 
 \section{General Motion (Chasles' Theorem)}
@@ -235,8 +267,7 @@
         (I_{xy})_O &= I_{xy} + m x_G y_G
     \end{align*}
 
-    
-\section{Principal Axes as Eigenvalue Problem}
+\section{*Principal Axes as Eigenvalue Problem}
 
 
 \section{Center of Mass}
@@ -246,8 +277,35 @@
 \section{Tangential Velocity}
 \[\mathbf{v} = \boldsymbol{\omega} \times \mathbf{r}\]
 
+
+\section{General Eqns for 3D Rotational Motion}
+    The governing equations are those of conservation of:
+    \begin{align*}
+        \text{linear momentum } \mathbf{L} &= M\mathbf{v}_G, \;\mathbf{\dot{L}} = \mathbf{F}  \\
+        \text{angular momentum } \mathbf{H} &= [\mathbf{I}]\boldsymbol{\omega}, 
+            \;\mathbf{\dot{H}}_G = \mathbf{M}_G
+    \end{align*}
+
+
+\section{Euler's Equations}
+    Body-fixed frame aligned with principal axes:
+    \begin{align*}
+        M_x &= I_{xx}\dot{\omega}_x - (I_{yy} - I_{zz} ) \omega_y\omega_z \\
+        M_y &= I_{yy}\dot{\omega}_y - (I_{zz} - I_{xx} ) \omega_z\omega_x \\
+        M_z &= I_{zz}\dot{\omega}_z - (I_{xx} - I_{yy} ) \omega_x\omega_y
+    \end{align*}
+
+
 \section{Coreolis Theorem}
-\section{Space and Body Cones}
+    Time derivative of a vector in a rotating frame. Consider $W$ a fixed frame,
+    $B$ a rotating frame with angular velocity $\boldsymbol{\Omega}$, and a vector
+    $\mathbf{r}$:
+    \[ \prescript{W}{}{ \mathbf{\dot{r}} } = \diff{\prescript{W}{}{ \mathbf{r} }}{t} =
+       \prescript{B}{}{ \mathbf{\dot{r}} } + \boldsymbol{\Omega} \times \prescript{B}{}{ \mathbf{r} } \]
+
+
+\section{*Space and Body Cones}
+\section{*Conservation of Energy}
 
 
 \clearpage
