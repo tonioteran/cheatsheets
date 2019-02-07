@@ -120,6 +120,7 @@
     {\bf Equation:} $\mathbf{H}_{O} = \mathbf{r} \times \mathbf{L} = \mathbf{r} 
     \times m\mathbf{v}$ \\
     {\bf Equation:} $\mathbf{H}_{O} = \mathbf{r}_G \times m\mathbf{v}_G + \mathbf{H}_G$ \\
+    {\bf Equation:} $\mathbf{H}_{G} = [\mathbf{I}_G]\boldsymbol{\omega} $ \\
     - for a system of particles (about fixed point $O$):
     \begin{align*}
         \mathbf{H}_O &= \sum_i \left( \mathbf{r}_i \times m_i \mathbf{v}_i \right)
@@ -161,6 +162,14 @@
     forces plus any external moments. Expression valid for any movement of $G$!
 
 
+\section{Conservation of Angular Momentum}
+    Several ways to express, but the best choices are:\\
+    (i) about the center of mass $G$:
+    \[ I_G \boldsymbol{\alpha} = \mathbf{M}_G = \mathbf{\dot{H}}_G \]
+    (ii) about fixed point $O$:
+    \[ I_O \boldsymbol{\alpha} = \mathbf{M}_O \]
+
+
 \section{Angular Impulse}
     \[ \int_{t_1}^{t_2}{\mathbf{M}_O}dt = \int_{t_1}^{t_2}{\mathbf{\dot{H}}_O}dt 
         = \mathbf{H}_O(t_2) - \mathbf{H}_O(t_1) = \Delta \mathbf{H}_O \]
@@ -176,6 +185,58 @@
             \text{decompose into relative and $G$} \\
           &= \frac{1}{2} m v_G^2 + \sum_i \frac{1}{2} m_i {v_i'}^2
     \end{align*}
+
+
+\section{General Motion (Chasles' Theorem)}
+    Velocity and acceleration of a point $P$ in a rigid body:
+    \begin{align*}
+        \mathbf{v}_P &= \mathbf{v}_{O'} + \boldsymbol{\omega} \times \mathbf{r}_P' \\
+        \mathbf{a}_P &= \mathbf{a}_{O'} + \boldsymbol{\dot{\omega}} \times \mathbf{r}_P' + 
+            \boldsymbol{{\omega}} \times (\boldsymbol{\omega} \times \mathbf{r}_P'),
+    \end{align*}
+    where $O'$ is a known point in the rigid body.
+
+
+\section{Moments of Inertia}
+    Mass distribution, always positive. $(\cdot)'$ relative to point
+    \begin{align*}
+        I_{xx} &= \int_m \left( {y'}^2 + {z'}^2 \right) dm \\
+        I_{yy} &= \int_m \left( {x'}^2 + {z'}^2 \right) dm \\
+        I_{zz} &= \int_m \left( {x'}^2 + {y'}^2 \right) dm
+    \end{align*}
+
+
+\section{Products of Inertia}
+    Imbalances in the mass distribution; pos, neg, or 0. $(\cdot)'$ relative to point
+    \begin{align*}
+        I_{xy} &= I_{yx} = \int_m {x'}{y'} dm \\
+        I_{xz} &= I_{zx} = \int_m {x'}{z'} dm \\
+        I_{yz} &= I_{zy} = \int_m {y'}{z'} dm
+    \end{align*}
+
+\section{Tensor of Inertia}
+    How mass is distributed in a rigid body. Symmetric matrix. Causes $\mathbf{H}$
+    and $\boldsymbol{\omega}$ to {\bf not} necessarily be parallel!
+    \[ [\mathbf{I}_G] = \begin{bmatrix} I_{xx} & -I_{xy} & -I_{xz} \\
+                                        -I_{yx} & I_{yy} & -I_{yz} \\
+                                        -I_{zx} & -I_{zy} & I_{zz} \end{bmatrix} \]
+
+
+\section{Principal Axes of Inertia}
+    Frame of reference for which products of inertia are always 0 (diagonal $[\mathbf{I}_G]$).
+    \[\mathbf{H}_G = I_x \omega_x \mathbf{\hat{i}} + 
+        I_y \omega_y \mathbf{\hat{j}} + I_z \omega_z \mathbf{\hat{k}} \]
+
+
+\section{Parallel Axis Theorem}
+    Get inertia tensor about different axes (about $O$). $(\cdot)'$ relative to $G$
+    \begin{align*}
+        (I_{xx})_O &= I_{xx} + m(y_G^2 + z_G^2) \\
+        (I_{xy})_O &= I_{xy} + m x_G y_G
+    \end{align*}
+
+    
+\section{Principal Axes as Eigenvalue Problem}
 
 
 \section{Center of Mass}
