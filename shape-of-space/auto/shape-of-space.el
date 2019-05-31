@@ -26,6 +26,8 @@
     "cancel"
     "mathtools")
    (TeX-add-symbols
-    "BibTeX"))
+    "BibTeX")
+   (LaTeX-add-bibliographies
+    "shape-of-space.bib"))
  :latex)
 
